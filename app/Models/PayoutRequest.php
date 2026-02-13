@@ -44,4 +44,14 @@ class PayoutRequest extends Model
     {
         return $this->belongsTo(User::class, 'requester_id');
     }
+
+    /**
+     * Internal Control: Ensure separation of duties.
+     */
+    public function canBeActionedBy($user): bool
+    {
+        // A user cannot approve or disburse their own request.
+        return $this->requester_id !== $user->id;
+    }
+
 }

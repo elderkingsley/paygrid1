@@ -27,7 +27,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('team');
 
     // Only Requesters (or admins for testing) should access this
-    Route::view('payouts/create', 'payouts.create')->name('payouts.create');
+    Route::view('payouts/create', 'livewire.payouts.create')
+    ->middleware(['auth', 'verified'])
+    ->name('payouts.create');
 });
 
 require __DIR__.'/auth.php';

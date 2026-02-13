@@ -24,13 +24,17 @@
                     <div class="text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em] px-3 mb-3">Main Menu</div>
 
                     <a href="{{ route('dashboard') }}" class="flex items-center px-4 py-2.5 text-xs font-bold rounded-xl {{ request()->routeIs('dashboard') ? 'bg-brand-primary text-white shadow-lg' : 'text-slate-400 hover:bg-slate-800/50 hover:text-white' }} transition-all duration-200">
-                        <svg class="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>
+                        <svg class="w-4 h-4 mr-3" ...></svg>
                         DASHBOARD
                     </a>
 
+                    <button @click="$dispatch('openPayoutModal')" class="w-full flex items-center px-4 py-2.5 text-xs font-bold rounded-xl text-slate-400 hover:bg-slate-800/50 hover:text-white transition-all duration-200">
+                        <svg class="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        CREATE REQUEST
+                    </button>
                     @if(auth()->user()->isAdmin())
                     <a href="{{ route('team') }}" class="flex items-center px-4 py-2.5 text-xs font-bold rounded-xl {{ request()->routeIs('team') ? 'bg-brand-primary text-white shadow-lg' : 'text-slate-400 hover:bg-slate-800/50 hover:text-white' }} transition-all duration-200">
-                        <svg class="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                        <svg class="w-4 h-4 mr-3" ...></svg>
                         MANAGE TEAM
                     </a>
                     @endif
@@ -62,5 +66,6 @@
                 </main>
             </div>
         </div>
+        <livewire:payouts.create-request />
     </body>
 </html>
