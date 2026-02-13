@@ -11,8 +11,19 @@ export default {
 
     theme: {
         extend: {
+            colors: {
+                // These match the reference repo's professional palette
+                brand: {
+                    dark: '#0F172A',      // Deep Navy Sidebar
+                    primary: '#4F46E5',   // Main Indigo
+                    secondary: '#64748B', // Muted Slate text
+                    surface: '#F8FAFC',   // Light Gray background
+                    accent: '#F97316',    // KYC Warning Orange
+                }
+            },
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                // Using a more professional "Fintech" font stack
+                sans: ['Plus Jakarta Sans', ...defaultTheme.fontFamily.sans],
             },
         },
     },
