@@ -18,9 +18,13 @@ public $showModal = false;
 protected $listeners = ['openKycModal' => 'show'];
 
 public function mount()
-{
-    $this->showModal = false;
-}
+    {
+        // Fail-safe: If a non-admin somehow triggers this,
+        // we just exit the method immediately.
+        if (! Auth::user()->isAdmin()) {
+            return;
+        }
+    }
 
 public function show()
 {
