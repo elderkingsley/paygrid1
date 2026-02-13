@@ -1,0 +1,37 @@
+services:
+  # PostgreSQL Database (UUID Native)
+  postgres:
+    image: postgres:16-alpine
+    container_name: paygrid1-postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432" # Exposes to your Linux host
+    environment:
+      POSTGRES_DB: paygrid1
+      POSTGRES_USER: paygrid1_user
+      POSTGRES_PASSWORD: secret
+    volumes:
+      - paygrid1-pgsql:/var/lib/postgresql/data
+
+  # Redis (Session, Cache, Queues)
+  redis:
+    image: redis:alpine
+    container_name: paygrid1-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379" # Exposes to your Linux host
+    volumes:
+      - paygrid1-redis:/data
+
+  # Mailpit (Local Email Testing)
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: paygrid1-mailpit
+    restart: unless-stopped
+    ports:
+      - "1025:1025" # SMTP routing (Exposed to host)
+      - "8025:8025" # Web UI dashboard
+      
+volumes:
+  paygrid1-pgsql:
+  paygrid1-redis:
